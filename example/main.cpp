@@ -1,5 +1,7 @@
 #include <SFML/Window.hpp>
 
+#include "TextureManager.hpp"
+
 class Window {
  public:
   Window()
@@ -7,6 +9,8 @@ class Window {
 
   void run() {
     sf::Event event;
+
+    this->init();
 
     while (_window.isOpen()) {
       while (_window.pollEvent(event)) {
@@ -17,7 +21,11 @@ class Window {
     }
   }
 
-  void init() {}
+  void init() {
+    _textureManager.load("main", "asset.png");
+
+    _textureManager.get("main");
+  }
 
   void close() {
     _window.close();
@@ -25,6 +33,7 @@ class Window {
 
  private:
   sf::Window _window;
+  TileManager::TextureManager _textureManager;
 };
 
 int main() {
