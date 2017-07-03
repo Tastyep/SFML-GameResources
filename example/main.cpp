@@ -1,6 +1,10 @@
-#include <SFML/Window.hpp>
+#include <iostream>
+
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/Event.hpp>
 
 #include "TextureManager.hpp"
+#include "TileManager.hpp"
 
 class Window {
  public:
@@ -10,7 +14,9 @@ class Window {
   void run() {
     sf::Event event;
 
-    this->init();
+    _textureManager.load("main", "asset.png");
+    const auto& texture = _textureManager.get("main");
+    auto nbTiles = _tileManager.parseTexture(texture, 32);
 
     while (_window.isOpen()) {
       while (_window.pollEvent(event)) {
@@ -18,13 +24,14 @@ class Window {
           this->close();
         }
       }
+      for (size_t i = 0; i < nbTiles; ++i) {
+        auto tile = _tileManager.tile(i);
+
+        tile.setPosition(i * 32, 0);
+        _window.draw(tile);
+      }
+      _window.display();
     }
-  }
-
-  void init() {
-    _textureManager.load("main", "asset.png");
-
-    _textureManager.get("main");
   }
 
   void close() {
@@ -32,8 +39,9 @@ class Window {
   }
 
  private:
-  sf::Window _window;
+  sf::RenderWindow _window;
   TileManager::TextureManager _textureManager;
+  TileManager::TileManager _tileManager;
 };
 
 int main() {
