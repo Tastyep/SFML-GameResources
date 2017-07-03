@@ -1,11 +1,11 @@
-#ifndef TILE_MANAGER_TILE_PARSER_HPP
-#define TILE_MANAGER_TILE_PARSER_HPP
+#ifndef GAME_RESSOURCES_TILE_PARSER_HPP
+#define GAME_RESSOURCES_TILE_PARSER_HPP
 
 #include <vector>
 
 #include <SFML/Graphics/Sprite.hpp>
 
-namespace TileManager {
+namespace Ressources {
 
 class TileManager {
  public:
@@ -17,6 +17,6 @@ class TileManager {
   std::vector<sf::Sprite> _tiles;
 };
 
-} /* namespace TileManager */
+} /* namespace Ressources */
 
 #endif

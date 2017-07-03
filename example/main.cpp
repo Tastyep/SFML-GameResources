@@ -1,9 +1,10 @@
 #include <iostream>
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Texture.hpp>
 #include <SFML/Window/Event.hpp>
 
-#include "TextureManager.hpp"
+#include "Manager.hpp"
 #include "TileManager.hpp"
 
 class Window {
@@ -40,8 +41,8 @@ class Window {
 
  private:
   sf::RenderWindow _window;
-  TileManager::TextureManager _textureManager;
-  TileManager::TileManager _tileManager;
+  Ressources::Manager<sf::Texture> _textureManager;
+  Ressources::TileManager _tileManager;
 };
 
 int main() {

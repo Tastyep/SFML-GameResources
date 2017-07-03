@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics/Texture.hpp>
 
-namespace TileManager {
+namespace Ressources {
 
 size_t TileManager::parseTexture(const sf::Texture& texture, size_t tileSize) {
   const auto textureSize = texture.getSize();
@@ -27,4 +27,4 @@ const sf::Sprite& TileManager::tile(size_t index) const {
   return _tiles.at(index);
 }
 
-} /* namespace TileManager */
+} /* namespace Ressources */
